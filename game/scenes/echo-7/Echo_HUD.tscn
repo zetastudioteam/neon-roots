@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cj72bapn2oyjp"]
+
+[ext_resource type="Script" uid="uid://cx1ryh37a808g" path="res://scripts/ui/echo_hud.gd" id="1_pgxqj"]
+
+[node name="EchoHUD" type="Control" unique_id=1832075705]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pgxqj")
+
+[node name="EnergyBar" type="ProgressBar" parent="." unique_id=1917960674]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="EnergyLabel" type="Label" parent="." unique_id=898058012]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MessageLabel" type="Label" parent="." unique_id=2034261488]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ObjectiveLabel" type="Label" parent="." unique_id=1267545787]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WarningLabel" type="Label" parent="." unique_id=442510868]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

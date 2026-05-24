@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dxpib0mgtrym6"]
+
+[ext_resource type="Script" uid="uid://dnn4slam6b473" path="res://scripts/systems/fuse.gd" id="1_a4hyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4hyu"]
+
+[sub_resource type="Animation" id="Animation_8x1fr"]
+resource_name = "collected"
+
+[sub_resource type="Animation" id="Animation_amogt"]
+resource_name = "disabled"
+
+[sub_resource type="Animation" id="Animation_yw5f3"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2yuk"]
+_data = {
+&"collected": SubResource("Animation_8x1fr"),
+&"disabled": SubResource("Animation_amogt"),
+&"idle": SubResource("Animation_yw5f3")
+}
+
+[node name="Fuse" type="Area2D" unique_id=1840723530]
+script = ExtResource("1_a4hyu")
+puzzle_system_path = NodePath("../../../Systems/PuzzleSystem")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1442697612]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1566757683]
+shape = SubResource("RectangleShape2D_a4hyu")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=835589018]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2014001520]
+libraries/ = SubResource("AnimationLibrary_m2yuk")

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://b7hio0c6rti3m"]
+
+[ext_resource type="Script" uid="uid://3o3pq8uyeeru" path="res://scripts/echo-7/echo_controller.gd" id="1_f81rx"]
+[ext_resource type="Texture2D" uid="uid://bq7vy7oyife7u" path="res://icon.svg" id="2_j1341"]
+[ext_resource type="Script" uid="uid://cwexfyhbctb75" path="res://scripts/echo-7/interaction_system.gd" id="2_powtg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4pqn"]
+size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_eaasd"]
+resource_name = "idle_down"
+
+[sub_resource type="Animation" id="Animation_f81rx"]
+resource_name = "idle_left"
+
+[sub_resource type="Animation" id="Animation_powtg"]
+resource_name = "idle_right"
+
+[sub_resource type="Animation" id="Animation_fx084"]
+resource_name = "idle_up"
+
+[sub_resource type="Animation" id="Animation_e0pbe"]
+resource_name = "walk_down"
+
+[sub_resource type="Animation" id="Animation_0ji6l"]
+resource_name = "walk_left"
+
+[sub_resource type="Animation" id="Animation_m68x8"]
+resource_name = "walk_right"
+
+[sub_resource type="Animation" id="Animation_02d0p"]
+resource_name = "walk_up"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knexu"]
+_data = {
+&"idle_down": SubResource("Animation_eaasd"),
+&"idle_left": SubResource("Animation_f81rx"),
+&"idle_right": SubResource("Animation_powtg"),
+&"idle_up": SubResource("Animation_fx084"),
+&"walk_down": SubResource("Animation_e0pbe"),
+&"walk_left": SubResource("Animation_0ji6l"),
+&"walk_right": SubResource("Animation_m68x8"),
+&"walk_up": SubResource("Animation_02d0p")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1341"]
+radius = 22.0
+
+[node name="Echo7" type="CharacterBody2D" unique_id=2109491586]
+script = ExtResource("1_f81rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533454580]
+shape = SubResource("RectangleShape2D_m4pqn")
+
+[node name="VisualRoot" type="Node2D" parent="." unique_id=2017332288]
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot" unique_id=1601499815]
+texture = ExtResource("2_j1341")
+
+[node name="DirectionMarker" type="Marker2D" parent="VisualRoot" unique_id=1280462689]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=434339899]
+libraries/ = SubResource("AnimationLibrary_knexu")
+
+[node name="InteractionSystem" type="Area2D" parent="." unique_id=702807045]
+script = ExtResource("2_powtg")
+prompt_path = NodePath("../../../UI/InteractionPrompt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionSystem" unique_id=1314966551]
+shape = SubResource("CircleShape2D_j1341")
+
+[node name="DebugLabel" type="Label" parent="." unique_id=1094726367]
+offset_left = 3.0
+offset_top = 163.0
+offset_right = 167.0
+offset_bottom = 212.0
+text = "Interativo atual: Fuse
+"

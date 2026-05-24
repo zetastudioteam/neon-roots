@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dijdvbytt7i5m"]
+
+[ext_resource type="Script" uid="uid://cx4nyxnioiyqa" path="res://scripts/systems/terminal_interactable.gd" id="1_we6v5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we6v5"]
+
+[node name="TerminalPuzzle" type="Area2D" unique_id=586948503]
+script = ExtResource("1_we6v5")
+puzzle_system_path = NodePath("../../../Systems/PuzzleSystem")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=588255723]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=985084455]
+shape = SubResource("RectangleShape2D_we6v5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1935546494]
