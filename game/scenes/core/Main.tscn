@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvwncjdtnfc4l" path="res://scenes/props/Door.tscn" id="1_1wb4g"]
 [ext_resource type="Script" uid="uid://bg0u1rc3dohkj" path="res://scripts/core/game_manager.gd" id="1_8tad8"]
 [ext_resource type="PackedScene" uid="uid://dxpib0mgtrym6" path="res://scenes/props/Fuse.tscn" id="2_8tad8"]
+[ext_resource type="PackedScene" uid="uid://blmef4y7nhhi5" path="res://UnderCity_Interior.tscn" id="2_v0fxp"]
 [ext_resource type="PackedScene" uid="uid://dijdvbytt7i5m" path="res://scenes/props/TerminalPuzzle.tscn" id="3_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://b7hio0c6rti3m" path="res://scenes/echo-7/Echo-7.tscn" id="4_v0fxp"]
 [ext_resource type="Script" uid="uid://ccljtebomlgcv" path="res://scripts/systems/puzzle_system.gd" id="5_dau2k"]
@@ -22,11 +23,7 @@ puzzle_system_path = NodePath("../Systems/PuzzleSystem")
 
 [node name="TileLayers" type="Node2D" parent="World" unique_id=982471597]
 
-[node name="GroundLayer" type="TileMapLayer" parent="World/TileLayers" unique_id=2116145063]
-
-[node name="WallLayer" type="TileMapLayer" parent="World/TileLayers" unique_id=1585295915]
-
-[node name="DetailLayer" type="TileMapLayer" parent="World/TileLayers" unique_id=2043676764]
+[node name="UndercityInterior" parent="World/TileLayers" unique_id=1836469907 instance=ExtResource("2_v0fxp")]
 
 [node name="Props" type="Node2D" parent="World" unique_id=548392718]
 

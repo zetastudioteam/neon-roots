@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q285cfvoy7f1"
-valid=false
+uid="uid://m8h7o0gc6vg8"
+path="res://.godot/imported/neo_zero_props_02_free.png-bb5ddc9f6998c47a939247e2a2a4fa47.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/art/tilesets/undercity_tileset.png"
+source_file="res://assets/art/tilesets/neo_zero/neo_zero_props_02_free.png"
+dest_files=["res://.godot/imported/neo_zero_props_02_free.png-bb5ddc9f6998c47a939247e2a2a4fa47.ctex"]
 
 [params]
 

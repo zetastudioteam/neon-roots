@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dta0ifaiw1cp7"
-valid=false
+uid="uid://c82ofk0xoc44n"
+path="res://.godot/imported/neo_zero_tiles_and_buildings_01.png-fb5d6e933b9d00e4f0a61c8c3b71cb6b.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/art/tilesets/toxic_tileset.png"
+source_file="res://assets/art/tilesets/neo_zero/neo_zero_tiles_and_buildings_01.png"
+dest_files=["res://.godot/imported/neo_zero_tiles_and_buildings_01.png-fb5d6e933b9d00e4f0a61c8c3b71cb6b.ctex"]
 
 [params]
 
