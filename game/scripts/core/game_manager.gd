@@ -171,6 +171,19 @@ func finish_demo() -> void:
 
 func _connect_hud() -> void:
 	if hud == null:
+		return
+
+	if hud.has_method("set_energy"):
+		hud.set_energy(current_energy, max_energy)
+
+	if hud.has_method("show_message"):
+		if not message_requested.is_connected(hud.show_message):
+			message_requested.connect(hud.show_message)
+
+	if hud.has_method("set_objective"):
+		if not objective_changed.is_connected(hud.set_objective):
+			objective_changed.connect(hud.set_objective)
+	if hud == null:
 		push_warning("GameManager: hud_path não foi configurado.")
 		return
 
@@ -225,6 +238,10 @@ func _on_energy_depleted() -> void:
 
 
 func _show_message(message_text: String) -> void:
+	message_requested.emit(message_text)
+
+	if hud != null and hud.has_method("show_message"):
+		hud.show_message(message_text)
 	emit_signal("message_requested", message_text)
 
 	if hud != null and hud.has_method("show_message"):

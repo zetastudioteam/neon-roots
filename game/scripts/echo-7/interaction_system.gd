@@ -33,6 +33,17 @@ func _ready() -> void:
 	if actor == null:
 		actor = owner
 
+	if prompt == null:
+		auto_show_prompt = false
+	else:
+		if prompt.has_method("hide_prompt"):
+			prompt.hide_prompt()
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
+
+	if actor == null:
+		actor = owner
+
 	if prompt == null and auto_show_prompt:
 		push_warning("InteractionSystem: prompt_path não foi configurado.")
 

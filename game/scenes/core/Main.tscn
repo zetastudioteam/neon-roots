@@ -2,23 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://dvwncjdtnfc4l" path="res://scenes/props/Door.tscn" id="1_1wb4g"]
 [ext_resource type="Script" uid="uid://bg0u1rc3dohkj" path="res://scripts/core/game_manager.gd" id="1_8tad8"]
-[ext_resource type="Script" uid="uid://0m7otn1wqmfw" path="res://scenes/core/main_spawn_player.gd" id="1_dau2k"]
+[ext_resource type="Script" uid="uid://0m7otn1wqmfw" path="res://scripts/core/main_spawn_player.gd" id="1_dau2k"]
 [ext_resource type="PackedScene" uid="uid://dxpib0mgtrym6" path="res://scenes/props/Fuse.tscn" id="2_8tad8"]
 [ext_resource type="PackedScene" uid="uid://blmef4y7nhhi5" path="res://scenes/environments/UnderCity_Interior.tscn" id="2_v0fxp"]
 [ext_resource type="PackedScene" uid="uid://dijdvbytt7i5m" path="res://scenes/props/TerminalPuzzle.tscn" id="3_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://b7hio0c6rti3m" path="res://scenes/echo-7/Echo-7.tscn" id="4_v0fxp"]
 [ext_resource type="Script" uid="uid://ccljtebomlgcv" path="res://scripts/systems/puzzle_system.gd" id="5_dau2k"]
-[ext_resource type="PackedScene" uid="uid://cj72bapn2oyjp" path="res://scenes/echo-7/Echo_HUD.tscn" id="6_ld2r7"]
 [ext_resource type="Script" uid="uid://dii4tcfdfxbeo" path="res://scripts/core/camera_follow.gd" id="6_p1ppg"]
-[ext_resource type="PackedScene" uid="uid://205d4tthfg8j" path="res://scenes/systems/InteractionPrompt.tscn" id="7_nxm05"]
 
 [node name="Main" type="Node2D" unique_id=1285748332]
 script = ExtResource("1_dau2k")
+echo_path = NodePath("PlayerContainer/Echo7")
+player_spawn_path = NodePath("World/PlayerSpawn")
 
 [node name="GameManager" type="Node" parent="." unique_id=252108530]
 script = ExtResource("1_8tad8")
 echo_path = NodePath("../PlayerContainer/Echo7")
-hud_path = NodePath("../UI/EchoHUD")
 puzzle_system_path = NodePath("../Systems/PuzzleSystem")
 
 [node name="World" type="Node2D" parent="." unique_id=1401674579]
@@ -44,11 +43,10 @@ position = Vector2(812, 392)
 [node name="PlayerContainer" type="Node2D" parent="." unique_id=1782257041]
 
 [node name="Echo7" parent="PlayerContainer" unique_id=2109491586 instance=ExtResource("4_v0fxp")]
-position = Vector2(2, -2)
+position = Vector2(1, -14)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=204879621]
-visible = false
 zoom = Vector2(4, 4)
 script = ExtResource("6_p1ppg")
 target_path = NodePath("../PlayerContainer/Echo7")
@@ -66,17 +64,3 @@ target_door_path = NodePath("../../World/Props/Door")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2120375038]
 visible = false
-
-[node name="EchoHUD" parent="UI" unique_id=1832075705 instance=ExtResource("6_ld2r7")]
-offset_left = 21.0
-offset_top = 109.0
-offset_right = 21.0
-offset_bottom = 109.0
-metadata/_edit_use_anchors_ = true
-
-[node name="InteractionPrompt" parent="UI" unique_id=259206561 instance=ExtResource("7_nxm05")]
-offset_left = 104.0
-offset_top = 3.0
-offset_right = 104.0
-offset_bottom = 3.0
-metadata/_edit_use_anchors_ = true
