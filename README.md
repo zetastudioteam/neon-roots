@@ -1,6 +1,6 @@
 # Neon Roots
 
-![Neon Roots - Arquivos Nexus](docs/images/image_intro.png)
+![Neon Roots - Arquivos Nexus](assets/image_intro.png)
 
 **Neon Roots** é um projeto acadêmico de jogo narrativo 2D top-down ambientado em um futuro cyberpunk em colapso, onde tecnologia, desigualdade social e degradação ambiental moldaram uma cidade dividida entre privilégio e abandono.
 
@@ -209,11 +209,11 @@ Demonstrar a base inicial de Neon Roots:
 
 ### Exploração e coleta de item
 
-![Echo-7 encontrando o fusível](docs/images/find_fuse.png)
+![Echo-7 encontrando o fusível](assets/find_fuse.png)
 
 ### Primeiro fragmento
 
-![Echo-7 diante do primeiro fragmento](docs/images/find_fragment.png)
+![Echo-7 diante do primeiro fragmento](assets/find_fragment.png)
 
 ---
 
@@ -251,7 +251,29 @@ A perspectiva top-down foi escolhida por favorecer a leitura espacial do ambient
 - ChatGPT — apoio na geração de imagens, organização de ideias, documentação, roteiro, estruturação narrativa e suporte durante o desenvolvimento
 ---
 
-## Como Executar o Projeto
+## Download da POC Jogável
+
+A versão executável da POC está disponível na aba **Releases** deste repositório.
+
+> O arquivo jogável não está armazenado diretamente no repositório para evitar que o histórico do Git fique pesado.  
+> O código-fonte, documentação e imagens permanecem versionados normalmente, enquanto o build compactado é disponibilizado separadamente como artefato de release.
+
+🔗 [Baixar Neon Roots - POC Jogável](COLE_AQUI_O_LINK_DA_RELEASE)
+
+---
+
+## Como Executar
+
+### Jogar a POC
+
+1. Acesse a aba **Releases** deste repositório.
+2. Baixe o arquivo compactado da versão mais recente.
+3. Extraia o arquivo `.zip`.
+4. Execute o arquivo do jogo.
+
+> A build disponibilizada foi exportada para Windows.
+
+### Abrir o Projeto na Godot
 
 1. Baixe e instale a **Godot Engine 4.x**.
 2. Clone este repositório.
@@ -265,7 +287,6 @@ Caso o projeto esteja organizado dentro da pasta `game/`, importe o arquivo:
 ```text
 game/project.godot
 ```
-
 ---
 
 ## Controles
