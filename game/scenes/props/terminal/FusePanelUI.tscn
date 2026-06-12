@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://ffvrp06x32bo"]
+
+[ext_resource type="Script" uid="uid://hr87t1d68w1t" path="res://scripts/systems/fuse_panel_ui.gd" id="1_r7efs"]
+[ext_resource type="Texture2D" uid="uid://rct78lk2q8ae" path="res://assets/art/tilesets/items/FusePanel_128x128.png" id="2_ppefa"]
+[ext_resource type="Texture2D" uid="uid://b0h0gpc0q8ndj" path="res://assets/art/tilesets/items/fuse_item.png" id="3_n44rp"]
+
+[node name="FusePanelUI" type="CanvasLayer" unique_id=615041413]
+process_mode = 3
+layer = 20
+script = ExtResource("1_r7efs")
+
+[node name="Root" type="Control" parent="." unique_id=1074307988]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="BackgroundOverlay" type="ColorRect" parent="Root" unique_id=78196370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.53333336)
+
+[node name="PanelWindow" type="PanelContainer" parent="Root" unique_id=495054263]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -200.0
+offset_right = 260.0
+offset_bottom = 200.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/PanelWindow" unique_id=159165934]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/PanelWindow/MarginContainer" unique_id=1929179847]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Root/PanelWindow/MarginContainer/VBoxContainer" unique_id=729457542]
+layout_mode = 2
+text = "Painel de Fusível"
+
+[node name="PanelDisplay" type="Control" parent="Root/PanelWindow/MarginContainer/VBoxContainer" unique_id=54211433]
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 2
+
+[node name="EmptyPanelImage" type="TextureRect" parent="Root/PanelWindow/MarginContainer/VBoxContainer/PanelDisplay" unique_id=717595370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ppefa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FuseIcon" type="TextureRect" parent="Root/PanelWindow/MarginContainer/VBoxContainer/PanelDisplay" unique_id=1842014588]
+visible = false
+layout_mode = 0
+offset_left = 249.0
+offset_top = 40.0
+offset_right = 340.0
+offset_bottom = 167.0
+texture = ExtResource("3_n44rp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="FeedbackLabel" type="Label" parent="Root/PanelWindow/MarginContainer/VBoxContainer" unique_id=2075905953]
+layout_mode = 2
+text = "Slot vazio. Fusível ausente."
+
+[node name="InstallFuseButton" type="Button" parent="Root/PanelWindow/MarginContainer/VBoxContainer" unique_id=187947675]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 1, 0.9764706, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.46666667, 0.46666667, 0.46666667, 1)
+theme_override_font_sizes/font_size = 18
+text = "Instalar o fusível"
+
+[node name="CloseButton" type="Button" parent="Root/PanelWindow/MarginContainer/VBoxContainer" unique_id=680226325]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 1, 0.9764706, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.46666667, 0.46666667, 0.46666667, 1)
+theme_override_font_sizes/font_size = 18
+text = "Fechar"

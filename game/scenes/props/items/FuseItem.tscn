@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d15shum6bg0fl"]
+
+[ext_resource type="Texture2D" uid="uid://b0h0gpc0q8ndj" path="res://assets/art/tilesets/items/fuse_item.png" id="1_coa27"]
+[ext_resource type="Script" uid="uid://dnyf3ktp1rcm4" path="res://scripts/systems/fuse_item.gd" id="1_f3ial"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3ial"]
+size = Vector2(4, 14)
+
+[node name="FuseItem" type="Area2D" unique_id=495807028]
+script = ExtResource("1_f3ial")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=682019990]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_coa27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=62805381]
+shape = SubResource("RectangleShape2D_f3ial")

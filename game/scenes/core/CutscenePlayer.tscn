@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cyu083ss1noin"]
+
+[ext_resource type="Script" uid="uid://cw0qwue4bdfua" path="res://scripts/systems/cutscene_player.gd" id="1_7gy0k"]
+[ext_resource type="Texture2D" uid="uid://dmd8bu77l3qf8" path="res://assets/art/cutscenes/intro/Awaking_Echo7.jpeg" id="2_ikjrh"]
+
+[node name="CutscenePlayer" type="CanvasLayer" unique_id=685234949]
+layer = 10
+script = ExtResource("1_7gy0k")
+
+[node name="Root" type="Control" parent="." unique_id=1531742851]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="Root" unique_id=1726657909]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ikjrh")
+expand_mode = 1
+
+[node name="DarkOverlay" type="ColorRect" parent="Root" unique_id=1860863224]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.33333334)
+
+[node name="TextPanel" type="PanelContainer" parent="Root" unique_id=2096244509]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.98
+anchor_right = 0.95
+anchor_bottom = 0.98
+offset_top = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/TextPanel" unique_id=1677423883]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/TextPanel/MarginContainer" unique_id=1000952078]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Root/TextPanel/MarginContainer/VBoxContainer" unique_id=601973831]
+layout_mode = 2
+text = "Neon Roots
+"
+horizontal_alignment = 1
+
+[node name="BodyLabel" type="Label" parent="Root/TextPanel/MarginContainer/VBoxContainer" unique_id=821065724]
+layout_mode = 2
+text = "A Nexus prometeu segurança para todos. Mas, sob a cidade iluminada, a Undercity foi deixada no escuro."
+autowrap_mode = 2
+
+[node name="ButtonRow" type="HBoxContainer" parent="Root/TextPanel/MarginContainer/VBoxContainer" unique_id=1273920636]
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="Root/TextPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=210549045]
+layout_mode = 2
+text = "Continuar"
+
+[node name="SkipButton" type="Button" parent="Root/TextPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=978458510]
+layout_mode = 2
+text = "Pular"

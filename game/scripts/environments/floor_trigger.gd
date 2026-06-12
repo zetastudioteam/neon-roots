@@ -12,6 +12,7 @@ extends Area2D
 @export var interaction_text: String = "Usar escada"
 
 var player_inside: CharacterBody2D = null
+var this_trigger_is_showing_prompt: bool = false
 
 @onready var floor_switcher: Node = get_node_or_null(floor_switcher_path)
 @onready var prompt: Node = get_node_or_null(prompt_path)
@@ -102,9 +103,35 @@ func _show_prompt() -> void:
 	elif prompt is Label:
 		prompt.text = "[E] " + interaction_text
 		prompt.visible = true
+	
+	this_trigger_is_showing_prompt = true
 
 
 func _hide_prompt() -> void:
+	if prompt == null:
+		return
+
+	if not this_trigger_is_showing_prompt:
+		return
+
+	if prompt.has_method("hide_prompt"):
+		prompt.hide_prompt()
+	elif prompt is CanvasItem:
+		prompt.visible = false
+
+	this_trigger_is_showing_prompt = false
+	if prompt == null:
+		return
+
+	if not this_trigger_is_showing_prompt:
+		return
+
+	if prompt.has_method("hide_prompt"):
+		prompt.hide_prompt()
+	elif prompt is CanvasItem:
+		prompt.visible = false
+
+	this_trigger_is_showing_prompt = false
 	if prompt == null:
 		return
 

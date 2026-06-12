@@ -1,44 +1,56 @@
 [gd_scene format=3 uid="uid://bv5v1i584uit6"]
 
-[ext_resource type="PackedScene" uid="uid://dvwncjdtnfc4l" path="res://scenes/props/Door.tscn" id="1_1wb4g"]
 [ext_resource type="Script" uid="uid://bg0u1rc3dohkj" path="res://scripts/core/game_manager.gd" id="1_8tad8"]
 [ext_resource type="Script" uid="uid://0m7otn1wqmfw" path="res://scripts/core/main_spawn_player.gd" id="1_dau2k"]
-[ext_resource type="PackedScene" uid="uid://dxpib0mgtrym6" path="res://scenes/props/Fuse.tscn" id="2_8tad8"]
-[ext_resource type="PackedScene" uid="uid://blmef4y7nhhi5" path="res://scenes/environments/UnderCity_Interior.tscn" id="2_v0fxp"]
-[ext_resource type="PackedScene" uid="uid://dijdvbytt7i5m" path="res://scenes/props/TerminalPuzzle.tscn" id="3_p1ppg"]
+[ext_resource type="PackedScene" uid="uid://blmef4y7nhhi5" path="res://scenes/environments/NexusArchive_Interior.tscn" id="2_v0fxp"]
+[ext_resource type="PackedScene" uid="uid://cu3ay1an7eumv" path="res://scenes/props/terminal/FusePanelWorld.tscn" id="4_dau2k"]
 [ext_resource type="PackedScene" uid="uid://b7hio0c6rti3m" path="res://scenes/echo-7/Echo-7.tscn" id="4_v0fxp"]
-[ext_resource type="Script" uid="uid://ccljtebomlgcv" path="res://scripts/systems/puzzle_system.gd" id="5_dau2k"]
+[ext_resource type="Script" uid="uid://bpuh2dvr1g83p" path="res://scripts/systems/puzzle_system.gd" id="5_dau2k"]
 [ext_resource type="Script" uid="uid://dii4tcfdfxbeo" path="res://scripts/core/camera_follow.gd" id="6_p1ppg"]
+[ext_resource type="PackedScene" uid="uid://ffvrp06x32bo" path="res://scenes/props/terminal/FusePanelUI.tscn" id="8_8tad8"]
+[ext_resource type="PackedScene" uid="uid://cj72bapn2oyjp" path="res://scenes/echo-7/Echo_HUD.tscn" id="10_v0fxp"]
+[ext_resource type="PackedScene" uid="uid://205d4tthfg8j" path="res://scenes/systems/InteractionPrompt.tscn" id="11_dau2k"]
+[ext_resource type="Script" uid="uid://cc5gpcnq1ci3" path="res://scripts/core/main_menu.gd" id="11_ld2r7"]
+[ext_resource type="PackedScene" uid="uid://cyu083ss1noin" path="res://scenes/core/CutscenePlayer.tscn" id="12_ld2r7"]
+[ext_resource type="Texture2D" uid="uid://dmd8bu77l3qf8" path="res://assets/art/cutscenes/intro/Awaking_Echo7.jpeg" id="13_x24xt"]
+[ext_resource type="Texture2D" uid="uid://cutdoortmq1fj" path="res://assets/art/cutscenes/intro/NexusArchive_Front.jpeg" id="14_founp"]
+[ext_resource type="Texture2D" uid="uid://blslfil3yyis6" path="res://assets/art/cutscenes/ending/find_fragment_tube.png" id="15_ujn3e"]
+[ext_resource type="Texture2D" uid="uid://i7ta8vmjwbc7" path="res://assets/art/cutscenes/ending/find_fragment_tube_2.png" id="16_l85qj"]
+[ext_resource type="Texture2D" uid="uid://bjj6q7b6sh58l" path="res://assets/art/cutscenes/ending/get_fragment.png" id="17_e72lg"]
+[ext_resource type="Texture2D" uid="uid://dabj1q208bpxq" path="res://assets/art/cutscenes/ending/building_neo.png" id="18_je01s"]
+[ext_resource type="Texture2D" uid="uid://btj8b8qpm1dli" path="res://assets/art/cutscenes/ending/bulding_neo_2.png" id="19_5xeuc"]
+[ext_resource type="Texture2D" uid="uid://bh7hjnmgiphbi" path="res://assets/art/cutscenes/ending/bulding_neo_4.png" id="20_33cho"]
+[ext_resource type="Texture2D" uid="uid://ckt0bes318glg" path="res://assets/art/cutscenes/ending/despertar_neo.png" id="21_4d3qn"]
+[ext_resource type="Texture2D" uid="uid://bnodec6waa70" path="res://assets/art/cutscenes/ending/Ending.jpeg" id="22_33iv3"]
 
 [node name="Main" type="Node2D" unique_id=1285748332]
 script = ExtResource("1_dau2k")
 echo_path = NodePath("PlayerContainer/Echo7")
 player_spawn_path = NodePath("World/PlayerSpawn")
 
-[node name="GameManager" type="Node" parent="." unique_id=252108530]
+[node name="GameManager" type="Node" parent="." unique_id=252108530 groups=["game_manager"]]
 script = ExtResource("1_8tad8")
 echo_path = NodePath("../PlayerContainer/Echo7")
-puzzle_system_path = NodePath("../Systems/PuzzleSystem")
+hud_path = NodePath("../UI/EchoHUD")
+puzzle_system_path = NodePath("../UI/Systems/PuzzleSystem")
+start_energy = 3.0
+awakening_objective = "ENCONTRAR FONTE DE CARGA."
+gameplay_objective = "Explore o prédio de arquivos da Nexus."
 
 [node name="World" type="Node2D" parent="." unique_id=1401674579]
 
 [node name="TileLayers" type="Node2D" parent="World" unique_id=982471597]
 
 [node name="UndercityInterior" parent="World/TileLayers" unique_id=1836469907 instance=ExtResource("2_v0fxp")]
+position = Vector2(-21, -13)
 
-[node name="Props" type="Node2D" parent="World" unique_id=548392718]
-
-[node name="Door" parent="World/Props" unique_id=911128556 instance=ExtResource("1_1wb4g")]
-
-[node name="Fuse" parent="World/Props" unique_id=1840723530 instance=ExtResource("2_8tad8")]
-
-[node name="TerminalPuzzle" parent="World/Props" unique_id=586948503 instance=ExtResource("3_p1ppg")]
+[node name="FusePanelWorld2" parent="World/TileLayers/UndercityInterior/GroundFloor/GameplayObjects" parent_id_path=PackedInt32Array(1836469907, 2019958162) index="1" unique_id=1075138154 instance=ExtResource("4_dau2k")]
 
 [node name="PlayerSpawn" type="Marker2D" parent="World" unique_id=1904320820]
-position = Vector2(27, -129)
+position = Vector2(166, -145)
 
 [node name="FragmentSpawn" type="Marker2D" parent="World" unique_id=876631831]
-position = Vector2(812, 392)
+position = Vector2(686, 299)
 
 [node name="PlayerContainer" type="Node2D" parent="." unique_id=1782257041]
 
@@ -50,17 +62,98 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(4, 4)
 script = ExtResource("6_p1ppg")
 target_path = NodePath("../PlayerContainer/Echo7")
-use_limits = false
-limit_left_value = 0
-limit_top_value = 0
-limit_right_value = 1440
-limit_bottom_value = 720
-
-[node name="Systems" type="Node" parent="." unique_id=1995691755]
-
-[node name="PuzzleSystem" type="Node" parent="Systems" unique_id=1089448348]
-script = ExtResource("5_dau2k")
-target_door_path = NodePath("../../World/Props/Door")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2120375038]
+
+[node name="Systems" type="Node" parent="UI" unique_id=1995691755]
+
+[node name="PuzzleSystem" type="Node" parent="UI/Systems" unique_id=1089448348 groups=["puzzle_system"]]
+script = ExtResource("5_dau2k")
+target_door_path = NodePath("../../../World/TileLayers/UndercityInterior/GroundFloor/GameplayObjects/Door_Puzzle")
+
+[node name="EchoHUD" parent="UI" unique_id=1832075705 instance=ExtResource("10_v0fxp")]
 visible = false
+
+[node name="InteractionPrompt" parent="UI" unique_id=259206561 instance=ExtResource("11_dau2k")]
+visible = false
+anchors_preset = 7
+offset_top = -50.0
+offset_bottom = 0.0
+
+[node name="FusePanelUI" parent="UI" unique_id=615041413 groups=["fuse_panel_ui"] instance=ExtResource("8_8tad8")]
+
+[node name="MainMenu" type="CanvasLayer" parent="UI" unique_id=1043731530]
+visible = false
+script = ExtResource("11_ld2r7")
+
+[node name="Root" type="Control" parent="UI/MainMenu" unique_id=1150874252]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="UI/MainMenu/Root" unique_id=1728420631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="DarkOverlay" type="ColorRect" parent="UI/MainMenu/Root" unique_id=930963578]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.039215688, 1)
+
+[node name="CenterBox" type="VBoxContainer" parent="UI/MainMenu/Root" unique_id=148489778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="UI/MainMenu/Root/CenterBox" unique_id=241704851]
+layout_mode = 2
+text = "Neon - Roots"
+
+[node name="SubtitleLabel" type="Label" parent="UI/MainMenu/Root/CenterBox" unique_id=953683241]
+layout_mode = 2
+text = "Demo jogável"
+
+[node name="PlayButton" type="Button" parent="UI/MainMenu/Root/CenterBox" unique_id=1667934169]
+layout_mode = 2
+text = "Jogar"
+
+[node name="QuitButton" type="Button" parent="UI/MainMenu/Root/CenterBox" unique_id=781771401]
+layout_mode = 2
+text = "Sair"
+
+[node name="IntroCut" parent="UI" unique_id=685234949 groups=["intro_cutscene"] instance=ExtResource("12_ld2r7")]
+titles = ["O Despertar", "Arquivos Nexus"]
+texts = ["Echo-7 desperta entre sucata, chuva tóxica e concreto frio. Sua carga está crítica. O protocolo é simples: evitar desligamento.", "À frente, o antigo Arquivo Nexus ainda emite sinais de energia. A corporação prometeu segurança para todos. Mas, na Undercity, suas ruínas contam outra história.Se Echo quiser sobreviver, precisa entrar, encontrar uma fonte de carga e descobrir por que algo ainda pulsa sob aquele prédio abandonado."]
+images = Array[Texture2D]([ExtResource("13_x24xt"), ExtResource("14_founp")])
+
+[node name="EndingCut" parent="UI" unique_id=604749817 groups=["ending_cutscene"] instance=ExtResource("12_ld2r7")]
+titles = ["O Fragmento", "Sinal Anômalo", "Contato", "Reconstrução", "Uma Consciência", "Neo", "Fim da Demo", "Fim!!"]
+texts = ["No fundo do Arquivo Nexus, Echo-7 encontra uma cápsula esquecida. Dentro dela, uma luz ainda pulsa, fraca demais para iluminar o mundo, mas forte o bastante para chamá-la.", "O núcleo reage à aproximação. Não parece uma bateria comum. Há dados quebrados, memórias antigas e algo que seu sistema não consegue classificar.", "Echo segura o fragmento. Por um instante, a fome energética silencia. No lugar dela, surgem imagens: vida, perda, cuidado… e uma promessa que a Nexus nunca cumpriu.", "Ao redor do fragmento, restos de máquinas começam a se mover. Peças esquecidas respondem à luz como se lembrassem de uma forma que ainda não existia.", "Parafusos, placas, fios e metal se unem em silêncio. Aquilo não está apenas sendo montado. Está despertando.", "A luz ganha corpo. Pequeno, estranho e improvável, Neo abre os olhos pela primeira vez no coração morto da Undercity.", "Echo-7 encontrou o primeiro fragmento. No jogo completo, sua jornada continuaria pela Undercity em busca dos 17 fragmentos capazes de reconstruir a vida, a cidade e o futuro."]
+images = Array[Texture2D]([ExtResource("15_ujn3e"), ExtResource("16_l85qj"), ExtResource("17_e72lg"), ExtResource("18_je01s"), ExtResource("19_5xeuc"), ExtResource("20_33cho"), ExtResource("21_4d3qn"), ExtResource("22_33iv3")])
+
+[editable path="World/TileLayers/UndercityInterior"]
+[editable path="World/TileLayers/UndercityInterior/GroundFloor/GameplayObjects/Door_Puzzle"]
+[editable path="PlayerContainer/Echo7"]
+[editable path="UI/FusePanelUI"]
+[editable path="UI/IntroCut"]

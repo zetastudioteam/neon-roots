@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cu3ay1an7eumv"]
+
+[ext_resource type="Script" uid="uid://bafgku71jsfnn" path="res://scripts/systems/fuse_panel_world.gd" id="1_5df6s"]
+[ext_resource type="Texture2D" uid="uid://rct78lk2q8ae" path="res://assets/art/tilesets/items/FusePanel_128x128.png" id="2_d0t33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqave"]
+size = Vector2(11, 10)
+
+[node name="FusePanelWorld" type="Area2D" unique_id=1075138154]
+script = ExtResource("1_5df6s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=112526190]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_d0t33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=206348894]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_tqave")

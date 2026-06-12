@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://205d4tthfg8j"]
 
-[ext_resource type="Script" uid="uid://c6n3wkvx226cn" path="res://scripts/systems/interaction_prompt.gd" id="1_bmec2"]
-
-[sub_resource type="Animation" id="Animation_bmec2"]
-resource_name = "hide"
-
-[sub_resource type="Animation" id="Animation_a36j3"]
-resource_name = "show"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnqae"]
-_data = {
-&"hide": SubResource("Animation_bmec2"),
-&"show": SubResource("Animation_a36j3")
-}
+[ext_resource type="Script" uid="uid://c6n3wkvx226cn" path="res://scripts/systems/interactions/interaction_prompt.gd" id="1_bmec2"]
 
 [node name="InteractionPrompt" type="Control" unique_id=259206561]
 layout_mode = 3
-anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -85.0
+offset_right = 180.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("1_bmec2")
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=829572700]
 layout_mode = 0
@@ -37,11 +37,4 @@ text = "[E]"
 
 [node name="ActionLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1084865338]
 layout_mode = 2
-text = "Interagir
-Pegar fusível
-Abrir porta
-Ativar terminal
-Examinar fragmento"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=659643759]
-libraries/ = SubResource("AnimationLibrary_gnqae")
+text = "Interagir"
