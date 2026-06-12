@@ -258,7 +258,7 @@ A versão executável da POC está disponível na aba **Releases** deste reposit
 > O arquivo jogável não está armazenado diretamente no repositório para evitar que o histórico do Git fique pesado.  
 > O código-fonte, documentação e imagens permanecem versionados normalmente, enquanto o build compactado é disponibilizado separadamente como artefato de release.
 
-🔗 [Baixar Neon Roots - POC Jogável](COLE_AQUI_O_LINK_DA_RELEASE)
+🔗 [Baixar Neon Roots - POC Jogável](https://github.com/zetastudioteam/neon-roots/releases/tag/v0.1-poc)
 
 ---
 
