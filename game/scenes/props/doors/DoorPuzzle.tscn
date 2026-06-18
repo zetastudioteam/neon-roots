@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dvwncjdtnfc4l"]
+
+[ext_resource type="Script" uid="uid://bduro1km5t2yd" path="res://scripts/systems/doors/door_puzzle.gd" id="1_mcav3"]
+[ext_resource type="Texture2D" uid="uid://mcqhir6n0753" path="res://assets/art/tilesets/door/door_open.png" id="2_18px7"]
+[ext_resource type="Texture2D" uid="uid://d0y2vfxj7b4qo" path="res://assets/art/tilesets/door/door_step_open.png" id="3_soeq0"]
+[ext_resource type="Texture2D" uid="uid://dhsw31m3opvix" path="res://assets/art/tilesets/door/door_step_close.png" id="4_pyngq"]
+[ext_resource type="Texture2D" uid="uid://b4ggraa13c8j0" path="res://assets/art/tilesets/door/door_close.png" id="5_g40ng"]
+[ext_resource type="Script" uid="uid://cly6pnl0qji76" path="res://scripts/systems/doors/door_interaction_area.gd" id="6_5f4wv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgh6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_18px7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_soeq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pyngq")
+}],
+"loop": false,
+"name": &"close",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_g40ng")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pyngq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_soeq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_18px7")
+}],
+"loop": false,
+"name": &"open",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18px7"]
+size = Vector2(26, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soeq0"]
+size = Vector2(32, 40)
+
+[node name="Door_Puzzle" type="Node2D" unique_id=911128556]
+script = ExtResource("1_mcav3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=952556504]
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_cgh6c")
+animation = &"close"
+frame = 2
+frame_progress = 1.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=776163439]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=963112911]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_18px7")
+disabled = true
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=50770188]
+script = ExtResource("6_5f4wv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=393319332]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_soeq0")

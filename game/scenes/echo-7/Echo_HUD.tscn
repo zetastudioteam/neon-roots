@@ -6,28 +6,74 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_pgxqj")
+energy_bar_path = NodePath("")
+energy_label_path = NodePath("")
+objective_label_path = NodePath("")
+message_label_path = NodePath("")
+warning_label_path = NodePath("")
 
-[node name="EnergyBar" type="ProgressBar" parent="." unique_id=1917960674]
-layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="EnergyPanel" type="PanelContainer" parent="." unique_id=1989109171]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 280.0
+offset_bottom = 84.0
 
-[node name="EnergyLabel" type="Label" parent="." unique_id=898058012]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="EnergyPanel" unique_id=1851068623]
+layout_mode = 2
 
-[node name="MessageLabel" type="Label" parent="." unique_id=2034261488]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="EnergyLabel" type="Label" parent="EnergyPanel/VBoxContainer" unique_id=397044434]
+layout_mode = 2
+text = "
+"
 
-[node name="ObjectiveLabel" type="Label" parent="." unique_id=1267545787]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="EnergyBar" type="ProgressBar" parent="EnergyPanel/VBoxContainer" unique_id=1167374864]
+layout_mode = 2
+value = 50.0
 
-[node name="WarningLabel" type="Label" parent="." unique_id=442510868]
+[node name="Label" type="Label" parent="EnergyPanel/VBoxContainer" unique_id=193115050]
+layout_mode = 2
+
+[node name="ObjectiveLabel" type="Label" parent="." unique_id=885579671]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 20.0
+offset_top = 95.0
+offset_right = 520.0
+offset_bottom = 135.0
+text = "Objetivo:
+- ENCONTRAR FONTE DE CARGA"
+
+[node name="MessagePanel" type="PanelContainer" parent="." unique_id=801329988]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MessageLabel" type="Label" parent="MessagePanel" unique_id=1955447851]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Fusível obtido"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="WarningLabel" type="Label" parent="." unique_id=1113670174]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 60.0
+text = "ENERGIA CRÍTICA
+"

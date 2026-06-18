@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://bv5v1i584uit6"]
+
+[ext_resource type="Script" uid="uid://bg0u1rc3dohkj" path="res://scripts/core/game_manager.gd" id="1_8tad8"]
+[ext_resource type="Script" uid="uid://0m7otn1wqmfw" path="res://scripts/core/main_spawn_player.gd" id="1_dau2k"]
+[ext_resource type="PackedScene" uid="uid://blmef4y7nhhi5" path="res://scenes/environments/NexusArchive_Interior.tscn" id="2_v0fxp"]
+[ext_resource type="PackedScene" uid="uid://cu3ay1an7eumv" path="res://scenes/props/terminal/FusePanelWorld.tscn" id="4_dau2k"]
+[ext_resource type="PackedScene" uid="uid://b7hio0c6rti3m" path="res://scenes/echo-7/Echo-7.tscn" id="4_v0fxp"]
+[ext_resource type="Script" uid="uid://bpuh2dvr1g83p" path="res://scripts/systems/puzzle_system.gd" id="5_dau2k"]
+[ext_resource type="Script" uid="uid://dii4tcfdfxbeo" path="res://scripts/core/camera_follow.gd" id="6_p1ppg"]
+[ext_resource type="PackedScene" uid="uid://ffvrp06x32bo" path="res://scenes/props/terminal/FusePanelUI.tscn" id="8_8tad8"]
+[ext_resource type="PackedScene" uid="uid://cj72bapn2oyjp" path="res://scenes/echo-7/Echo_HUD.tscn" id="10_v0fxp"]
+[ext_resource type="PackedScene" uid="uid://205d4tthfg8j" path="res://scenes/systems/InteractionPrompt.tscn" id="11_dau2k"]
+[ext_resource type="Script" uid="uid://cc5gpcnq1ci3" path="res://scripts/core/main_menu.gd" id="11_ld2r7"]
+[ext_resource type="PackedScene" uid="uid://cyu083ss1noin" path="res://scenes/core/CutscenePlayer.tscn" id="12_ld2r7"]
+[ext_resource type="Texture2D" path="res://assets/art/cutscenes/WhatsApp Image 2026-06-02 at 9.31.29 AM.jpeg" id="13_nxm05"]
+
+[node name="Main" type="Node2D" unique_id=1285748332]
+script = ExtResource("1_dau2k")
+echo_path = NodePath("PlayerContainer/Echo7")
+player_spawn_path = NodePath("World/PlayerSpawn")
+
+[node name="GameManager" type="Node" parent="." unique_id=252108530 groups=["game_manager"]]
+script = ExtResource("1_8tad8")
+echo_path = NodePath("../PlayerContainer/Echo7")
+hud_path = NodePath("../UI/EchoHUD")
+puzzle_system_path = NodePath("../Systems/PuzzleSystem")
+start_energy = 3.0
+awakening_objective = "ENCONTRAR FONTE DE CARGA."
+gameplay_objective = "Explore o prédio de arquivos da Nexus."
+
+[node name="World" type="Node2D" parent="." unique_id=1401674579]
+
+[node name="TileLayers" type="Node2D" parent="World" unique_id=982471597]
+
+[node name="UndercityInterior" parent="World/TileLayers" unique_id=1836469907 instance=ExtResource("2_v0fxp")]
+position = Vector2(-21, -13)
+
+[node name="FusePanelWorld" parent="World/TileLayers/UndercityInterior/GroundFloor/GameplayObjects" parent_id_path=PackedInt32Array(1836469907, 2019958162) index="1" unique_id=1075138154 instance=ExtResource("4_dau2k")]
+
+[node name="PlayerSpawn" type="Marker2D" parent="World" unique_id=1904320820]
+position = Vector2(653, -139)
+
+[node name="FragmentSpawn" type="Marker2D" parent="World" unique_id=876631831]
+position = Vector2(812, 392)
+
+[node name="PlayerContainer" type="Node2D" parent="." unique_id=1782257041]
+
+[node name="Echo7" parent="PlayerContainer" unique_id=2109491586 instance=ExtResource("4_v0fxp")]
+position = Vector2(1, -14)
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=204879621]
+zoom = Vector2(4, 4)
+script = ExtResource("6_p1ppg")
+target_path = NodePath("../PlayerContainer/Echo7")
+limit_left_value = 0
+limit_top_value = 0
+limit_right_value = 1440
+limit_bottom_value = 720
+
+[node name="Systems" type="Node" parent="." unique_id=1995691755]
+
+[node name="PuzzleSystem" type="Node" parent="Systems" unique_id=1089448348 groups=["puzzle_system"]]
+script = ExtResource("5_dau2k")
+target_door_path = NodePath("../../World/TileLayers/UndercityInterior/GroundFloor/GameplayObjects/Door_Puzzle")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2120375038]
+
+[node name="EchoHUD" parent="UI" unique_id=1832075705 instance=ExtResource("10_v0fxp")]
+
+[node name="InteractionPrompt" parent="UI" unique_id=259206561 instance=ExtResource("11_dau2k")]
+visible = false
+anchors_preset = 7
+offset_top = -50.0
+offset_bottom = 0.0
+
+[node name="FusePanelUI" parent="UI" unique_id=615041413 groups=["fuse_panel_ui"] instance=ExtResource("8_8tad8")]
+
+[node name="Root" parent="UI/FusePanelUI" index="0" unique_id=1074307988]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="CanvasLayer" parent="UI" unique_id=1043731530]
+script = ExtResource("11_ld2r7")
+
+[node name="Root" type="Control" parent="UI/MainMenu" unique_id=1150874252]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="UI/MainMenu/Root" unique_id=1728420631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="DarkOverlay" type="ColorRect" parent="UI/MainMenu/Root" unique_id=930963578]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.039215688, 1)
+
+[node name="CenterBox" type="VBoxContainer" parent="UI/MainMenu/Root" unique_id=148489778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="UI/MainMenu/Root/CenterBox" unique_id=241704851]
+layout_mode = 2
+text = "Neon - Roots"
+
+[node name="SubtitleLabel" type="Label" parent="UI/MainMenu/Root/CenterBox" unique_id=953683241]
+layout_mode = 2
+text = "Demo jogável"
+
+[node name="PlayButton" type="Button" parent="UI/MainMenu/Root/CenterBox" unique_id=1667934169]
+layout_mode = 2
+text = "Jogar"
+
+[node name="QuitButton" type="Button" parent="UI/MainMenu/Root/CenterBox" unique_id=781771401]
+layout_mode = 2
+text = "Sair"
+
+[node name="IntroCutscene" parent="UI" unique_id=685234949 groups=["intro_cutscene"] instance=ExtResource("12_ld2r7")]
+images = Array[Texture2D]([ExtResource("13_nxm05"), null, null])
+
+[node name="EndingCutscene" parent="UI" unique_id=1085830465 groups=["ending_cutscene"] instance=ExtResource("12_ld2r7")]
+
+[node name="CreditsCutscene" parent="UI" unique_id=1350015656 instance=ExtResource("12_ld2r7")]
+
+[editable path="World/TileLayers/UndercityInterior"]
+[editable path="World/TileLayers/UndercityInterior/GroundFloor/GameplayObjects/Door_Puzzle"]
+[editable path="PlayerContainer/Echo7"]
+[editable path="UI/FusePanelUI"]

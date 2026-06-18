@@ -9,12 +9,10 @@
 extends Area2D
 class_name EchoInteractionSystem
 
-# Sinal
 signal interactable_focused(interactable: Node)
 signal interactable_unfocused()
 signal interaction_performed(interactable: Node)
 
-# Variáveis exportadas
 @export var prompt_path: NodePath
 @export var interact_action: StringName = &"interact"
 @export var actor_path: NodePath = NodePath("..")
@@ -26,18 +24,25 @@ var current_interactable: Node = null
 @onready var prompt: Control = get_node_or_null(prompt_path)
 @onready var actor: Node = get_node_or_null(actor_path)
 
+
 func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-	area_exited.connect(_on_area_exited)
+	var entered_callable: Callable = Callable(self, "_on_area_entered")
+	var exited_callable: Callable = Callable(self, "_on_area_exited")
+
+	if not area_entered.is_connected(entered_callable):
+		area_entered.connect(entered_callable)
+
+	if not area_exited.is_connected(exited_callable):
+		area_exited.connect(exited_callable)
 
 	if actor == null:
 		actor = owner
 
-	if prompt == null and auto_show_prompt:
-		push_warning("InteractionSystem: prompt_path não foi configurado.")
-
-	if prompt != null and prompt.has_method("hide_prompt"):
-		prompt.hide_prompt()
+	if prompt == null:
+		auto_show_prompt = false
+	else:
+		if prompt.has_method("hide_prompt"):
+			prompt.hide_prompt()
 
 
 func _process(_delta: float) -> void:
@@ -78,10 +83,11 @@ func _refresh_current_interactable() -> void:
 		if current_interactable != null:
 			current_interactable = null
 			interactable_unfocused.emit()
+
 		_hide_prompt()
 		return
 
-	var best_interactable := _get_closest_interactable()
+	var best_interactable: Node = _get_closest_interactable()
 
 	if best_interactable != current_interactable:
 		current_interactable = best_interactable
@@ -97,17 +103,14 @@ func _refresh_current_interactable() -> void:
 
 func _get_closest_interactable() -> Node:
 	var closest: Node = null
-	var closest_distance := INF
+	var closest_distance: float = INF
 
 	for item in nearby_interactables:
-		var item_position := Vector2.ZERO
-
-		if item is Node2D:
-			item_position = item.global_position
-		else:
+		if not item is Node2D:
 			continue
 
-		var distance := global_position.distance_to(item_position)
+		var item_position: Vector2 = item.global_position
+		var distance: float = global_position.distance_to(item_position)
 
 		if distance < closest_distance:
 			closest_distance = distance
